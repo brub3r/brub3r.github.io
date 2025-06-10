@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Árvore em Crescimento</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <!-- MENU LATERAL -->
+    <button id="menu-btn">☰</button>
+
+    <nav id="side-menu">
+      <ul>
+        <li><a href="../inicio/index.html">🏠 Início</a></li>
+        <li><a href="../sobre-nos/index.html">📘 Sobre</a></li>
+        <li><a href="../contador/index.html">🌳 Árvore</a></li>
+        <li><a href="../jogo/index.html">🎮 Jogo</a></li>
+        <li><a href="../quiz/index.html">❓ Quiz</a></li>
+        <li><a href="../como-reciclar/index.html">♻️ Como Reciclar</a></li>
+      </ul>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+      <header>
+        <h1>🌱 Árvore em Crescimento</h1>
+        <p>Ajude a natureza reciclando e veja sua árvore crescer!</p>
+      </header>
+
+      <div class="pontos">Pontos acumulados: <span id="pontos">0</span></div>
+      <img
+        id="arvore-img"
+        src="img-arvore/etapa0.png"
+        alt="Árvore em crescimento"
+      />
+
+      <div class="btns">
+        <button onclick="adicionarPontos(10)">📄 Reciclei Papel</button>
+        <button onclick="adicionarPontos(20)">🍾 Reciclei Vidro</button>
+        <button onclick="adicionarPontos(15)">🧴 Reciclei Plástico</button>
+        <button onclick="adicionarPontos(25)">🔩 Reciclei Metal</button>
+      </div>
+
+      <div id="parabens">🎉 Parabéns! Sua árvore cresceu totalmente! 🌳</div>
+      <div id="limite-container"></div>
+    </main>
+
+    <footer>
+      Projeto de Extensão 2025 - UNIFESP - ICT - Desenvolvido por Nadla
+      Fernandes Ferreira e Bruna dos Santos de Assis Bernardes
+    </footer>
+
+    <!-- Áudio -->
+    <audio id="som-vitoria" src="audio/vitoria.mp3"></audio>
+
+    <script>
+      let pontos = 0;
+      let folhasCriadas = false;
+      let somTocado = false;
+      let limiteAlcancado = false;
+
+      function atualizarImagem() {
+        const imagem = document.getElementById("arvore-img");
+        document.getElementById("pontos").textContent = pontos;
+        if (pontos >= 1000) {
+          mostrarLimite();
+          return;
+        }
+
+        // Remove efeito pulsar inicialmente
+        imagem.classList.remove("pulsar");
+
+        if (pontos >= 500) {
+          imagem.src = "img-arvore/etapa6.png";
+          imagem.classList.add("pulsar");
+          mostrarParabens();
+        } else if (pontos >= 300) {
+          imagem.src = "img-arvore/etapa5.png";
+        } else if (pontos >= 250) {
+          imagem.src = "img-arvore/etapa4.png";
+        } else if (pontos >= 150) {
+          imagem.src = "img-arvore/etapa3.png";
+        } else if (pontos >= 50) {
+          imagem.src = "img-arvore/etapa2.png";
+        } else if (pontos >= 1) {
+          imagem.src = "img-arvore/etapa1.png";
+        } else {
+          imagem.src = "img-arvore/etapa0.png";
+        }
+      }
+
+      function adicionarPontos(valor) {
+        if (limiteAlcancado) return;
+        pontos += valor;
+        atualizarImagem();
+      }
+
+      function mostrarParabens() {
+        const parabens = document.getElementById("parabens");
+        parabens.style.display = "block";
+
+        if (!folhasCriadas) {
+          for (let i = 0; i < 30; i++) criarFolha();
+          folhasCriadas = true;
+        }
+
+        if (!somTocado) {
+          document.getElementById("som-vitoria").play();
+          somTocado = true;
+        }
+      }
+
+      function criarFolha() {
+        const folha = document.createElement("div");
+        folha.classList.add("folha");
+        folha.textContent = "🍃";
+        folha.style.left = Math.random() * window.innerWidth + "px";
+        folha.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(folha);
+        setTimeout(() => folha.remove(), 6000);
+      }
+
+      // Função para criar emojis no limite
+      function criarEmojiLimite(emoji) {
+        const elem = document.createElement("div");
+        elem.classList.add("emoji-limite");
+        elem.textContent = emoji;
+        elem.style.left = Math.random() * window.innerWidth + "px";
+        elem.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(elem);
+        setTimeout(() => elem.remove(), 7000);
+      }
+
+      function mostrarLimite() {
+        limiteAlcancado = true;
+
+        document.getElementById("arvore-img").style.display = "none";
+        document.getElementById("parabens").style.display = "none";
+
+        const container = document.getElementById("limite-container");
+        container.style.display = "block";
+        container.innerHTML = `
+        <div style="
+          background: #fff3e0;
+          color: #4e342e;
+          padding: 30px 25px;
+          border-radius: 16px;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+          margin: 30px auto;
+          max-width: 650px;
+          font-size: 1.3rem;
+          font-weight: 600;
+          line-height: 1.4;
+          user-select: none;
+        ">
+          🛑 <strong>Você atingiu o máximo de pontos: 1000!</strong><br>
+          🌍 Sua contribuição fez a diferença. Obrigado por reciclar 💚
+          <br><br>
+          <img src="img-arvore/agradecimento.png" alt="Imagem de agradecimento"
+            style="max-width: 280px; margin-top: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+        </div>
+      `;
+
+        // Criar emojis caindo para efeito visual
+        for (let i = 0; i < 40; i++) {
+          criarEmojiLimite("🛑");
+          criarEmojiLimite("🍃");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const sideMenu = document.getElementById("side-menu");
+
+        menuBtn.addEventListener("click", () => {
+          sideMenu.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>

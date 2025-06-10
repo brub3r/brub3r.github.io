@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Quiz sobre Reciclagem com Barra de Progresso</title>
+  </head>
+  <body>
+    <button id="menu-btn">☰</button>
+
+    <nav id="side-menu">
+      <ul>
+        <li><a href="../inicio/index.html">🏠 Início</a></li>
+        <li><a href="../sobre-nos/index.html">📘 Sobre</a></li>
+        <li><a href="../contador/index.html">🌳 Árvore</a></li>
+        <li><a href="../jogo/index.html">🎮 Jogo</a></li>
+        <li><a href="../quiz/index.html">❓ Quiz</a></li>
+        <li><a href="../como-reciclar/index.html">♻️ Como Reciclar</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <header>
+        <h1>Quiz: O que você sabe sobre Reciclagem?</h1>
+      </header>
+      <section id="quiz">
+        <p class="pergunta">Carregando perguntas...</p>
+        <div id="barra-progresso-container">
+          <div id="barra-progresso"></div>
+        </div>
+        <form id="form-alternativas"></form>
+        <button id="btn-next" disabled>Próxima</button>
+        <div id="resultado"></div>
+      </section>
+      <div id="parabens" class="parabens pulsar">
+        🎉 Parabéns! Você entende mesmo de reciclagem! ♻️
+      </div>
+      <div id="limite-container"></div>
+    </main>
+
+    <footer>
+      Projeto de Extensão 2025 - UNIFESP - ICT - Desenvolvido por Nadla
+      Fernandes Ferreira e Bruna dos Santos de Assis Bernardes
+    </footer>
+
+    <script>
+      let emojisCriados = false;
+      const perguntaElem = document.querySelector("#quiz p.pergunta");
+      const formAlternativas = document.getElementById("form-alternativas");
+      const btnNext = document.getElementById("btn-next");
+      const resultadoElem = document.getElementById("resultado");
+      const barraProgresso = document.getElementById("barra-progresso");
+
+      const perguntas = [
+        {
+          pergunta: "Qual cor representa a lixeira de papel?",
+          alternativas: [
+            { texto: "Azul", valor: "azul" },
+            { texto: "Verde", valor: "verde" },
+            { texto: "Vermelho", valor: "vermelho" },
+          ],
+          correta: "azul",
+        },
+        {
+          pergunta: "Qual material não deve ser reciclado na lixeira de vidro?",
+          alternativas: [
+            { texto: "Garrafas", valor: "garrafas" },
+            { texto: "Vidro quebrado", valor: "vidro" },
+            { texto: "Espelhos", valor: "espelho" },
+          ],
+          correta: "espelho",
+        },
+        {
+          pergunta: "Qual tipo de plástico é mais reciclável?",
+          alternativas: [
+            { texto: "PET", valor: "pet" },
+            { texto: "PVC", valor: "pvc" },
+            { texto: "Plástico comum", valor: "plastico" },
+          ],
+          correta: "pet",
+        },
+        {
+          pergunta: "O que significa a sigla 'RECICLAR'?",
+          alternativas: [
+            { texto: "Reduzir, Reutilizar e Reciclar", valor: "rrr" },
+            { texto: "Recuperar materiais", valor: "recuperar" },
+            { texto: "Reutilizar resíduos", valor: "reutilizar" },
+          ],
+          correta: "rrr",
+        },
+        {
+          pergunta: "Qual desses materiais NÃO pode ser reciclado?",
+          alternativas: [
+            { texto: "Papel", valor: "papel" },
+            { texto: "Isopor", valor: "isopor" },
+            { texto: "Vidro", valor: "vidro" },
+          ],
+          correta: "isopor",
+        },
+        {
+          pergunta: "O que fazer com óleo de cozinha usado?",
+          alternativas: [
+            { texto: "Jogar na pia", valor: "pia" },
+            { texto: "Guardar para reciclagem", valor: "guardar" },
+            { texto: "Misturar com o lixo comum", valor: "lixo" },
+          ],
+          correta: "guardar",
+        },
+        {
+          pergunta:
+            "Quanto tempo leva para o plástico se decompor na natureza?",
+          alternativas: [
+            { texto: "100 anos", valor: "100" },
+            { texto: "500 anos", valor: "500" },
+            { texto: "1000 anos", valor: "1000" },
+          ],
+          correta: "500",
+        },
+        {
+          pergunta: "Qual é o principal benefício da reciclagem?",
+          alternativas: [
+            { texto: "Economizar recursos naturais", valor: "economizar" },
+            { texto: "Aumentar o lixo", valor: "aumentar" },
+            { texto: "Poluir menos", valor: "poluir" },
+          ],
+          correta: "economizar",
+        },
+        {
+          pergunta: "O que NÃO deve ser colocado na lixeira verde?",
+          alternativas: [
+            { texto: "Papelão", valor: "papelao" },
+            { texto: "Vidro", valor: "vidro" },
+            { texto: "Metal", valor: "metal" },
+          ],
+          correta: "metal",
+        },
+        {
+          pergunta: "Para que serve a compostagem?",
+          alternativas: [
+            { texto: "Produzir energia", valor: "energia" },
+            {
+              texto: "Transformar resíduos orgânicos em adubo",
+              valor: "adubo",
+            },
+            { texto: "Queimar lixo", valor: "queimar" },
+          ],
+          correta: "adubo",
+        },
+      ];
+
+      let arrayEmbaralhado = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      let indexPerguntaAtual = 0;
+      let pontuacao = 0;
+
+      let currentIndex = arrayEmbaralhado.length;
+
+      while (currentIndex != 0) {
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [arrayEmbaralhado[currentIndex], arrayEmbaralhado[randomIndex]] = [
+          arrayEmbaralhado[randomIndex],
+          arrayEmbaralhado[currentIndex],
+        ];
+      }
+
+      function carregarPergunta() {
+        resultadoElem.textContent = "";
+        btnNext.disabled = true;
+
+        const perguntaAtual = perguntas[arrayEmbaralhado[indexPerguntaAtual]];
+        perguntaElem.textContent =
+          indexPerguntaAtual + 1 + ". " + perguntaAtual.pergunta;
+
+        // Atualiza barra de progresso
+        const totalPerguntas = perguntas.length;
+        const progressoPercent = (indexPerguntaAtual / totalPerguntas) * 100;
+        barraProgresso.style.width = progressoPercent + "%";
+
+        formAlternativas.innerHTML = "";
+        let currentIndex = perguntaAtual.alternativas.length;
+
+        while (currentIndex != 0) {
+          let randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+
+          [
+            perguntaAtual.alternativas[currentIndex],
+            perguntaAtual.alternativas[randomIndex],
+          ] = [
+            perguntaAtual.alternativas[randomIndex],
+            perguntaAtual.alternativas[currentIndex],
+          ];
+        }
+        perguntaAtual.alternativas.forEach((alt, i) => {
+          const label = document.createElement("label");
+          label.classList.add("alternativa");
+          label.setAttribute("for", "alt" + i);
+
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.id = "alt" + i;
+          input.name = "alternativa";
+          input.value = alt.valor;
+
+          input.addEventListener("change", () => {
+            btnNext.disabled = false;
+          });
+
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(alt.texto));
+          formAlternativas.appendChild(label);
+        });
+
+        // Muda texto do botão no último item
+        if (indexPerguntaAtual === perguntas.length - 1) {
+          btnNext.textContent = "Finalizar";
+        } else {
+          btnNext.textContent = "Próxima";
+        }
+      }
+
+      function mostrarResultado() {
+        perguntaElem.textContent = "Quiz Finalizado!";
+        formAlternativas.innerHTML = "";
+        barraProgresso.style.width = "100%";
+        resultadoElem.style.display = "block";
+        resultadoElem.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+        btnNext.style.display = "none";
+        if (pontuacao == 10) {
+          mostrarParabens();
+        }
+      }
+
+      function mostrarParabens() {
+        const parabens = document.getElementById("parabens");
+        parabens.style.display = "block";
+
+        if (!emojisCriados) {
+          for (let i = 0; i < 30; i++) criarEmoji();
+          emojisCriados = true;
+        }
+      }
+
+      function criarEmoji() {
+        const elem = document.createElement("div");
+        elem.classList.add("emoji");
+        elem.textContent = "♻️";
+        elem.style.left = Math.random() * window.innerWidth + "px";
+        elem.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(elem);
+        setTimeout(() => elem.remove(), 7000);
+      }
+
+      btnNext.addEventListener("click", () => {
+        const respostaSelecionada = document.querySelector(
+          'input[name="alternativa"]:checked'
+        );
+        if (!respostaSelecionada) return;
+
+        const resposta = respostaSelecionada.value;
+        const correta = perguntas[arrayEmbaralhado[indexPerguntaAtual]].correta;
+
+        if (resposta === correta) {
+          pontuacao++;
+        }
+
+        indexPerguntaAtual++;
+        if (indexPerguntaAtual < perguntas.length) {
+          carregarPergunta();
+        } else {
+          mostrarResultado();
+        }
+      });
+
+      // Iniciar o quiz
+      carregarPergunta();
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const sideMenu = document.getElementById("side-menu");
+
+        menuBtn.addEventListener("click", () => {
+          sideMenu.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>

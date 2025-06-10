@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Como Reciclar</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <!-- Menu lateral -->
+    <button id="menu-btn">☰</button>
+
+    <nav id="side-menu">
+      <ul>
+        <li><a href="../inicio/index.html">🏠 Início</a></li>
+        <li><a href="../sobre-nos/index.html">📘 Sobre</a></li>
+        <li><a href="../contador/index.html">🌳 Árvore</a></li>
+        <li><a href="../jogo/index.html">🎮 Jogo</a></li>
+        <li><a href="../quiz/index.html">❓ Quiz</a></li>
+        <li><a href="../como-reciclar/index.html">♻️ Como Reciclar</a></li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main>
+      <h1>Como Reciclar</h1>
+
+      <!-- Imagem -->
+      <img
+        src="../../img/como-reciclar.jpg"
+        alt="Ilustração sobre reciclagem"
+      />
+
+      <!-- Texto explicativo -->
+      <p>
+        Para reciclar, o primeiro passo é separar o lixo em reciclável e não
+        reciclável. Em seguida, é importante limpar e secar as embalagens
+        recicláveis antes de as colocar no cesto apropriado. Finalmente, deve-se
+        seguir as instruções da sua cidade sobre onde e quando a coleta seletiva
+        é realizada.
+      </p>
+
+      <h2>Passos para reciclar:</h2>
+      <ol>
+        <li>
+          <strong>Separe os resíduos:</strong> Separe o lixo em reciclável
+          (papel, plástico, vidro, metal) e não reciclável (lixo orgânico,
+          resíduos de cozinha, etc.).
+        </li>
+        <li>
+          <strong>Limpe as embalagens:</strong> Lave as embalagens de plástico,
+          metal e vidro para remover resíduos de comida ou líquidos.
+        </li>
+        <li>
+          <strong>Seque as embalagens:</strong> Certifique-se de que as
+          embalagens estão completamente secas antes de as colocar no cesto de
+          reciclagem.
+        </li>
+        <li>
+          <strong>Separe por tipo de material:</strong> Use cores ou rótulos
+          para facilitar a separação dos materiais recicláveis (azul para papel
+          e papelão, verde para vidro, vermelho para plástico, amarelo para
+          metal).
+        </li>
+        <li>
+          <strong>Confira as instruções locais:</strong> Consulte as regras da
+          sua cidade sobre a coleta seletiva (dias da semana, horários, pontos
+          de entrega, etc.).
+        </li>
+        <li>
+          <strong>Reutilize e aproveite:</strong> Antes de descartar, tente
+          reutilizar itens como embalagens, garrafas, potes, etc.
+        </li>
+        <li>
+          <strong>Composte os resíduos orgânicos:</strong> Transforme restos de
+          comida e outros materiais orgânicos em adubo para suas plantas.
+        </li>
+      </ol>
+
+      <h2>Materiais recicláveis:</h2>
+      <ul>
+        <li>
+          <strong>Papel:</strong> Jornal, revistas, caixas de papelão, papel de
+          escritório.
+        </li>
+        <li>
+          <strong>Plástico:</strong> Garrafas, embalagens de alimentos, sacolas.
+        </li>
+        <li><strong>Vidro:</strong> Garrafas, potes, embalagens de vidro.</li>
+        <li><strong>Metal:</strong> Latas de alumínio, embalagens de metal.</li>
+      </ul>
+
+      <h2>Materiais não recicláveis:</h2>
+      <ul>
+        <li>
+          <strong>Lixo orgânico:</strong> Restos de comida, cascas de frutas e
+          legumes, borra de café.
+        </li>
+        <li><strong>Resíduos de saúde:</strong> Agulhas, seringas, algodão.</li>
+        <li>
+          <strong>Resíduos perigosos:</strong> Tintas, solventes, produtos
+          químicos.
+        </li>
+      </ul>
+
+      <h2>Dicas adicionais:</h2>
+      <ul>
+        <li>
+          <strong>Reduza o consumo:</strong> Tente comprar produtos com
+          embalagens recicláveis e evitar o desperdício de alimentos.
+        </li>
+        <li>
+          <strong>Conscientize-se:</strong> Informe-se sobre a importância da
+          reciclagem e incentive seus amigos e familiares a também reciclar.
+        </li>
+        <li>
+          <strong>Procure pontos de coleta:</strong> Consulte a prefeitura ou
+          órgãos ambientais da sua cidade para encontrar pontos de coleta
+          seletiva.
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      Projeto de Extensão 2025 - UNIFESP - ICT - Desenvolvido por Nadla
+      Fernandes Ferreira e Bruna dos Santos de Assis Bernardes
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const sideMenu = document.getElementById("side-menu");
+
+        menuBtn.addEventListener("click", () => {
+          sideMenu.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>
