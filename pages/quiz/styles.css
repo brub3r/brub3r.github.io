@@ -1,4 +1,9 @@
 /* Reset básico */
+:root {
+  --header-height: 10px;
+  --footer-height: 10px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -84,6 +89,7 @@ main {
   padding: 20px 75px;
   position: relative;
   overflow-x: hidden;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 /* Quiz container */
@@ -200,11 +206,13 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 14px;
+  color: #2e7d32;
   background-color: #c8e6c9;
   margin-top: 40px;
   position: absolute;
   bottom: 0;
   width: -webkit-fill-available;
+  height: var(--header-height);
 }
 
 .parabens {
@@ -264,4 +272,11 @@ footer {
   display: none;
   position: relative;
   z-index: 20;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 30px;
+    font-size: 9px;
+  }
 }

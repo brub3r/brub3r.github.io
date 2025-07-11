@@ -1,3 +1,8 @@
+:root {
+  --header-height: 10px;
+  --footer-height: 10px;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -94,6 +99,7 @@ main {
   background: white;
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 main p {
@@ -120,9 +126,18 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 14px;
+  color: #2e7d32;
   background-color: #c8e6c9;
   margin-top: 40px;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: -webkit-fill-available;
+  height: var(--header-height);
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 30px;
+    font-size: 9px;
+  }
 }

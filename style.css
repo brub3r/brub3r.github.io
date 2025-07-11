@@ -1,7 +1,11 @@
-/* Reset básico */
+:root {
+  --header-height: 10px;
+  --footer-height: 50px;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0fdf4;
   color: #333;
   position: relative;
@@ -15,7 +19,7 @@ body {
   top: 15px;
   left: 15px;
   font-size: 24px;
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -60,7 +64,7 @@ body {
 /* Cabeçalho */
 header {
   padding: 50px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   text-align: center;
   user-select: none;
@@ -71,6 +75,7 @@ main {
   padding: 20px;
   max-width: 900px;
   margin: auto;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 /* Rodapé */
@@ -87,7 +92,7 @@ footer {
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   min-height: 400px;
   margin-top: 20px;
 }
@@ -104,7 +109,7 @@ footer {
   text-align: center;
   width: 120px;
   padding: 10px;
-  border: 2px solid #4CAF50;
+  border: 2px solid #4caf50;
   border-radius: 8px;
   background-color: #e8f5e9;
   user-select: none;
@@ -142,7 +147,7 @@ footer {
 /* Efeito visual ao arrastar */
 #jogo-container img:active {
   cursor: grabbing;
-  border-color: #4CAF50;
+  border-color: #4caf50;
 }
 
 /* Efeito "shake" para erro */
@@ -151,9 +156,16 @@ footer {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 /* Tempo e Pontuação */
@@ -184,7 +196,7 @@ footer {
 
 /* Botões de nível */
 #selecionar-nivel button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 12px 20px;
