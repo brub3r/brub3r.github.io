@@ -1,0 +1,213 @@
+:root {
+  --header-height: 10px;
+  --footer-height: 50px;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0fdf4;
+  color: #333;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Botão do menu */
+#menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 6px;
+}
+
+/* Menu lateral */
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background-color: #388e3c;
+  padding-top: 60px;
+  transition: left 0.3s;
+  z-index: 999;
+}
+
+#side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#side-menu ul li {
+  margin: 20px;
+}
+
+#side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#side-menu.open {
+  left: 0;
+}
+
+/* Cabeçalho */
+header {
+  padding: 50px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  user-select: none;
+}
+
+/* Principal */
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  background-color: #e8f5e9;
+  user-select: none;
+}
+
+/* Container geral do jogo */
+#jogo-container {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  min-height: 400px;
+  margin-top: 20px;
+}
+
+/* Container das lixeiras */
+#jogo-container > div:first-child {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+/* Cada lixeira */
+.lixeira {
+  text-align: center;
+  width: 120px;
+  padding: 10px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background-color: #e8f5e9;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+/* Nome das lixeiras */
+.lixeira strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  color: #2e7d32;
+}
+
+/* Itens para arrastar */
+#jogo-container > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Imagens dos itens */
+#jogo-container img {
+  cursor: grab;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  user-select: none;
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* Efeito visual ao arrastar */
+#jogo-container img:active {
+  cursor: grabbing;
+  border-color: #4caf50;
+}
+
+/* Efeito "shake" para erro */
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Tempo e Pontuação */
+#status-jogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  gap: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #1b5e20;
+  user-select: none;
+}
+
+/* Fundo do body para o jogo (será alterado via JS) */
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transition: background-image 0.5s ease-in-out;
+  filter: brightness(0.7);
+}
+
+/* Botões de nível */
+#selecionar-nivel button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+#selecionar-nivel button:hover {
+  background-color: #388e3c;
+}

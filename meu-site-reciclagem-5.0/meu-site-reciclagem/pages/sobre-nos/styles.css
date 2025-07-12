@@ -1,0 +1,143 @@
+:root {
+  --header-height: 10px;
+  --footer-height: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0fdf4;
+  color: #333;
+}
+
+/* Botão do menu */
+#menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 6px;
+}
+
+/* Menu lateral */
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background-color: #388e3c;
+  padding-top: 60px;
+  transition: left 0.3s;
+  z-index: 999;
+}
+
+#side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+#side-menu ul li {
+  margin: 20px;
+}
+
+#side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#side-menu.open {
+  left: 0;
+}
+/* Fim Menu Lateral */
+
+/* Cabeçalho com imagem de fundo */
+header {
+  position: relative;
+  text-align: center;
+  padding: 60px 20px;
+  color: white;
+  background-color: #388e3c;
+  opacity: 0.9;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../../folhas-fundo.jpg"); /* fundo com folhas */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
+  filter: brightness(0.6);
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+main p {
+  text-align: justify;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.imagens {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.imagens img {
+  max-width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #2e7d32;
+  background-color: #c8e6c9;
+  margin-top: 40px;
+  position: relative;
+  bottom: 0;
+  width: -webkit-fill-available;
+  height: var(--header-height);
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 30px;
+    font-size: 9px;
+  }
+}

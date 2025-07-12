@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Reciclagem - Projeto de Extensão</title>
+  </head>
+  <body>
+    <button id="menu-btn">☰</button>
+
+    <!-- MENU LATERAL embutido -->
+    <nav id="side-menu">
+      <ul>
+        <li><a href="../inicio/index.html">🏠 Início</a></li>
+        <li><a href="../sobre-nos/index.html">📘 Sobre</a></li>
+        <li><a href="../contador/index.html">🌳 Árvore</a></li>
+        <li><a href="../jogo/index.html">🎮 Jogo</a></li>
+        <li><a href="../quiz/index.html">❓ Quiz</a></li>
+        <li><a href="../como-reciclar/index.html">♻️ Como Reciclar</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <div class="header-title">
+        <div class="logo-container">
+          <img src="../../logoprojeto.png" alt="Ilustração sobre reciclagem" />
+        </div>
+        <h1>Reciclagem - Projeto de Extensão</h1>
+      </div>
+    </header>
+
+    <main>
+      <h2>O que é reciclagem e por que ela é importante?</h2>
+
+      <img
+        src="../../reciclagem-exemplo.jpg"
+        alt="Ilustração sobre reciclagem"
+      />
+
+      <p>
+        A reciclagem é o processo de transformar resíduos, que normalmente
+        seriam descartados, em novos materiais e produtos. A sua importância
+        reside na redução do impacto ambiental, na conservação de recursos
+        naturais e na promoção de uma economia mais sustentável.
+      </p>
+
+      <p><strong>Por que a reciclagem é importante:</strong></p>
+
+      <p>
+        <strong>Reduz a necessidade de extrair recursos naturais:</strong> Ao
+        reaproveitar materiais, diminuímos a pressão sobre as reservas naturais
+        e a exploração desenfreada de matérias-primas.
+      </p>
+
+      <p>
+        <strong>Diminui a poluição:</strong> A reciclagem reduz a quantidade de
+        resíduos que vai para os aterros sanitários, minimizando a contaminação
+        do solo e da água.
+      </p>
+
+      <p>
+        <strong>Economiza energia:</strong> A fabricação de novos produtos a
+        partir de materiais reciclados consome menos energia do que a produção a
+        partir de matérias-primas virgens.
+      </p>
+
+      <p>
+        <strong>Reduz o consumo de água:</strong> Assim como a energia, a
+        produção de materiais reciclados também requer menos água do que a
+        produção a partir de recursos naturais.
+      </p>
+
+      <p>
+        <strong>Cria empregos e oportunidades econômicas:</strong> A reciclagem
+        gera empregos nas áreas de coleta, triagem, processamento e produção de
+        novos produtos.
+      </p>
+
+      <p>
+        <strong>Promove a sustentabilidade:</strong> A reciclagem é uma das
+        estratégias essenciais para a construção de uma sociedade mais
+        sustentável, que equilibra as necessidades humanas com a preservação do
+        meio ambiente.
+      </p>
+
+      <p>
+        <strong>Contribui para a saúde pública:</strong> A reciclagem ajuda a
+        reduzir a contaminação do ambiente e, consequentemente, contribui para a
+        proteção da saúde pública.
+      </p>
+
+      <p>
+        A reciclagem é, portanto, uma ferramenta fundamental para a proteção do
+        planeta e para o desenvolvimento de uma sociedade mais consciente e
+        sustentável.
+      </p>
+    </main>
+
+    <footer>
+      Projeto de Extensão 2025 - UNIFESP - ICT - Desenvolvido por Bruna dos
+      Santos de Assis Bernardes e Nadla Fernandes Ferreira
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const sideMenu = document.getElementById("side-menu");
+
+        menuBtn.addEventListener("click", () => {
+          sideMenu.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>

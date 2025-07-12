@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Desafio de Triagem Rápida</title>
+  </head>
+  <body>
+    <button id="menu-btn">☰</button>
+
+    <nav id="side-menu">
+      <ul>
+        <li><a href="../inicio/index.html">🏠 Início</a></li>
+        <li><a href="../sobre-nos/index.html">📘 Sobre</a></li>
+        <li><a href="../contador/index.html">🌳 Árvore</a></li>
+        <li><a href="../jogo/index.html">🎮 Jogo</a></li>
+        <li><a href="../quiz/index.html">❓ Quiz</a></li>
+        <li><a href="../como-reciclar/index.html">♻️ Como Reciclar</a></li>
+      </ul>
+    </nav>
+    <main>
+      <header>
+        <h1>♻️ Desafio de Triagem Rápida</h1>
+        <p>Tente reclicar o máximo que puder dentro do tempo estimado!</p>
+      </header>
+    </main>
+
+    <div id="background" style="background-image: url('img/fundo-poluido.jpg')">
+      <div id="status-jogo">
+        <div>Tempo: <span id="tempo">0</span>s</div>
+        <div>Pontuação: <span id="pontuacao">0</span></div>
+      </div>
+
+      <div class="btns" style="text-align: center; margin-bottom: 20px">
+        <button class="nivel-btn" data-nivel="facil">Fácil</button>
+        <button class="nivel-btn" data-nivel="medio">Médio</button>
+        <button class="nivel-btn" data-nivel="dificil">Difícil</button>
+      </div>
+
+      <div id="jogo-container"></div>
+    </div>
+    <!-- Áudio -->
+    <audio id="som-vitoria" src="audio/vitoria.mp3"></audio>
+
+    <footer>
+      Projeto de Extensão 2025 - UNIFESP - ICT - Desenvolvido por Bruna dos
+      Santos de Assis Bernardes e Nadla Fernandes Ferreira
+    </footer>
+    <script type="text/javascript" src="jogo.js"></script>
+    <script>
+      // Menu toggle
+      const menuBtn = document.getElementById("menu-btn");
+      const sideMenu = document.getElementById("side-menu");
+      menuBtn.addEventListener("click", () =>
+        sideMenu.classList.toggle("open")
+      );
+    </script>
+  </body>
+</html>

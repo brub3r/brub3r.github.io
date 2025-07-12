@@ -1,0 +1,116 @@
+:root {
+  --header-height: 10px;
+  --footer-height: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0fdf4;
+  color: #333;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Cabeçalho */
+header {
+  padding: 50px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  user-select: none;
+}
+
+/* Principal */
+main {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  max-width: 900px;
+  margin-top: 2rem !important;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+}
+main h2 {
+  margin-top: 30px;
+}
+
+/* Botão do menu */
+#menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 6px;
+}
+
+/* Menu lateral */
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background-color: #388e3c;
+  padding-top: 60px;
+  transition: left 0.3s;
+  z-index: 999;
+}
+
+#side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+#side-menu ul li {
+  margin: 20px;
+}
+
+#side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#side-menu.open {
+  left: 0;
+}
+/* Fim Menu Lateral */
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #2e7d32;
+  background-color: #c8e6c9;
+  margin-top: 40px;
+  position: relative;
+  bottom: 0;
+  width: -webkit-fill-available;
+  height: var(--header-height);
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 30px;
+    font-size: 9px;
+  }
+}

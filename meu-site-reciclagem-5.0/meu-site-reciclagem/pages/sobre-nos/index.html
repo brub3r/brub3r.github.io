@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Sobre Nós - Projeto de Extensão</title>
+  </head>
+  <body>
+    <button id="menu-btn">☰</button>
+
+    <nav id="side-menu">
+      <ul>
+        <li><a href="../inicio/index.html">🏠 Início</a></li>
+        <li><a href="../sobre-nos/index.html">📘 Sobre</a></li>
+        <li><a href="../contador/index.html">🌳 Árvore</a></li>
+        <li><a href="../jogo/index.html">🎮 Jogo</a></li>
+        <li><a href="../quiz/index.html">❓ Quiz</a></li>
+        <li><a href="../como-reciclar/index.html">♻️ Como Reciclar</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>Sobre Nós</h1>
+    </header>
+
+    <main>
+      <p>
+        Somos alunas da Universidade Federal de São Paulo – Instituto de Ciência
+        e Tecnologia (UNIFESP-ICT) e desenvolvemos este site como parte do
+        projeto de extensão da disciplina “Tecnologia e Meio Ambiente”,
+        ministrada pela professora Maraísa Gonçalves.
+      </p>
+
+      <p>
+        Este site tem como objetivo não apenas cumprir o papel de um projeto
+        acadêmico, mas também oferecer um complemento interativo aos vídeos
+        publicados no YouTube (<a
+          target="_blank"
+          href="https://www.youtube.com/watch?v=wDpNaRtm0gQ"
+          >Assista aqui</a
+        >). Esperamos que, por meio desta plataforma, os conceitos relacionados
+        à reciclagem sejam fixados de maneira clara e envolvente para todos os
+        visitantes.
+      </p>
+
+      <div class="imagens">
+        <img src="../../logo-unifesp.png" alt="Logo da UNIFESP" />
+        <img
+          src="../../tecnologia-meio-ambiente.jpg"
+          alt="Tecnologia e Meio Ambiente"
+        />
+      </div>
+    </main>
+
+    <footer>
+      Projeto de Extensão 2025 - UNIFESP - ICT - Desenvolvido por Bruna dos
+      Santos de Assis Bernardes e Nadla Fernandes Ferreira
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const sideMenu = document.getElementById("side-menu");
+
+        menuBtn.addEventListener("click", () => {
+          sideMenu.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>
