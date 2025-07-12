@@ -208,8 +208,7 @@ footer {
   font-size: 14px;
   color: #2e7d32;
   background-color: #c8e6c9;
-  margin-top: 40px;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: -webkit-fill-available;
   height: var(--header-height);
